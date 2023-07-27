@@ -3,6 +3,7 @@ from .node import Node
 
 class SLL(object):
     def __init__(self):
+        self.length = 0
         self.head = None
 
     def is_empty(self):
@@ -19,6 +20,7 @@ class SLL(object):
         new = Node(val)
         new.next = self.head
         self.head = new
+        self.length += 1
 
     def add_to_tail(self, val):
         new = Node(val)
@@ -26,6 +28,7 @@ class SLL(object):
         while curr.next is not None:
             curr = curr.next
         curr.next = new
+        self.length+=1
 
     def delete_from_head(self):
         if self.is_empty():
@@ -33,6 +36,7 @@ class SLL(object):
         curr = self.head
         self.head = curr.next
         curr.next = None
+        self.length -= 1
         return curr.val
 
     def delete_nodes_with_value(self, key: int):
@@ -46,6 +50,7 @@ class SLL(object):
                 else:
                     prev.next = curr.next
                 curr = curr.next
+                self.length -= 1
             else:
                 prev = curr
                 curr = curr.next
